@@ -5,8 +5,6 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Objects;
-
 abstract class NBTModifier implements NBTBasicModifier {
     protected final JavaPlugin javaPlugin;
 
@@ -60,7 +58,7 @@ abstract class NBTModifier implements NBTBasicModifier {
 
 
     protected byte getByte(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.BYTE));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.BYTE);
     }
 
     protected byte[] getByteArray(final String key, final PersistentDataContainer persistentDataContainer) {
@@ -68,15 +66,15 @@ abstract class NBTModifier implements NBTBasicModifier {
     }
 
     protected double getDouble(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.DOUBLE));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.DOUBLE);
     }
 
     protected float getFloat(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.FLOAT));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.FLOAT);
     }
 
     protected int getInteger(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.INTEGER));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.INTEGER);
     }
 
     protected int[] getIntegerArray(final String key, final PersistentDataContainer persistentDataContainer) {
@@ -84,7 +82,7 @@ abstract class NBTModifier implements NBTBasicModifier {
     }
 
     protected long getLong(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.LONG));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.LONG);
     }
 
     protected long[] getLongArray(final String key, final PersistentDataContainer persistentDataContainer) {
@@ -92,7 +90,7 @@ abstract class NBTModifier implements NBTBasicModifier {
     }
 
     protected short getShort(final String key, final PersistentDataContainer persistentDataContainer) {
-        return Objects.requireNonNull(persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.SHORT));
+        return persistentDataContainer.get(new NamespacedKey(this.javaPlugin, key), PersistentDataType.SHORT);
     }
 
     protected String getString(final String key, final PersistentDataContainer persistentDataContainer) {
