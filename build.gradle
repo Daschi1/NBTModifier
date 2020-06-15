@@ -1,9 +1,9 @@
-plugins {
-    id 'java'
-}
+import org.apache.tools.ant.filters.ReplaceTokens
+
+apply plugin: 'java'
 
 group 'de.daschi'
-version 'v1.0.0a'
+version 'v1.0.0b'
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
@@ -13,18 +13,17 @@ repositories {
     mavenCentral()
 
     maven {
+        name = 'spigotmc-repo'
         url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
     }
 }
 
 dependencies {
     compileOnly 'org.spigotmc:spigot-api:1.15.2-R0.1-SNAPSHOT'
-    // The Spigot API with no shadowing. Requires the OSS repo.
-    compileOnly 'org.bukkit:bukkit:1.15.2-R0.1-SNAPSHOT' // The Bukkit API with no shadowing.
-    compileOnly 'org.spigotmc:spigot:1.15.2-R0.1-SNAPSHOT'
-    // The full Spigot server with no shadowing. Requires mavenLocal.
-    compileOnly 'org.bukkit:craftbukkit:1.15.2-R0.1-SNAPSHOT'
-    // The full CraftBukkit server with no shadowing. Requires mavenLocal.
 }
 
 jar {
@@ -32,4 +31,10 @@ jar {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
     exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
 }
