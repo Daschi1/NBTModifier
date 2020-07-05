@@ -2,6 +2,9 @@
 
 ## A nbt api for minecraft 1.13+.
 
+#Implementation
+[![](https://jitpack.io/v/Daschi1/NBTModifier.svg)](https://jitpack.io/#Daschi1/NBTModifier)
+
 # Usage
 
 ```java
